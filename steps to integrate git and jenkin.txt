@@ -1,0 +1,57 @@
+prerequisites:
+git for windows
+using python file - using pycharm as IDE
+java version 17 as of now as java18 not supported by jenkins
+download war file from download jenkins
+
+goto downloads and open cmd from this. 
+0) to run war file -
+1. java -jar jenkins.war
+---java -jar jenkins.war --httpPort=9191 (to use a different port default is 8080)
+
+2. copy admin password
+---will get message jenkin is fully update and running
+3. ----open browser http://localhost:8080
+unlock jenkins ----paste admin password copied from cmd
+install suggested plugins
+4. create first admin user page - enter username,password,full name and email
+5. save and continue. jenkin url will be displayed ---save and finish.
+click start using Jenkins
+---dashboard will open
+
+I) create folder in desktop <GITJenkinsIntegration>
+1. open git bash here
+--- initialise git 
+2. git init
+---copy paste simple python file in this folder<hello.py>
+3. ----add file to git
+git add .
+4. ---commit file
+git commit -m"hello.py"
+5. -----open github and create new repository RGITJenkinsIntegration and copy link
+----add repository origin
+git remote add origin https://github.com/Sornamughi/RGITJenkinsIntegration.git
+6. ----push commited files
+git push -u origin master
+
+
+II) create jenkins job
+1. open http://localhost:8080/ in browser
+2. create new project GITJenkinsIntegration as free style project
+3. select Git in source code management and copy paste GIT repository link
+<https://github.com/Sornamughi/RGITJenkinsIntegration.git>
+4. Build Triggers - select Poll SCM and give * * * * * - for every minute
+5. add build step - select execute windows batch command
+   add command ---- python hello.py
+6. save
+7. build now
+8. check answer in console
+
+III) make changes in python file and push changes to GIT repository
+IV) in Jenkins build now again and check console output 
+----Started by SCM Change
+and updated result will reflect
+
+
+
+
